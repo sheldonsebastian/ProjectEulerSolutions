@@ -8,13 +8,14 @@ def naiveApproach(num):
     # if remainder of num with prime number is 0, then keep dividing the num, else increment the prime number
     # repeat this till prime number < num
 
-    # here the issue is that we need to generate a list of prime numbers which maybe a slow process
+    # here the issue is that we need to generate a list of prime numbers upto num which maybe a slow process
     pass
 
 
 def optimumSolution(num):
-    # https: // projecteuler.net / overview = 003
-    #  every number n can at most(maximum) have one prime factor greater than sqrt(n)
+    # https://projecteuler.net/overview=003
+    # every number n can at most(maximum) have one prime factor greater than sqrt(n)
+
     pass
 
 
