@@ -76,8 +76,9 @@ if __name__ == "__main__":
     print(naiveApproach(5))  # 5
     print(naiveApproach(7))  # 7
     print(naiveApproach(8))  # 2
-    print(naiveApproach(13195))  # 29
+    print(naiveApproach(23))  # 23
     print(naiveApproach(33))  # 11
+    print(naiveApproach(13195))  # 29
     # print(naiveApproach(600851475143))  # timed out, cannot find solution need to find better approach
 
     print()
@@ -86,6 +87,7 @@ if __name__ == "__main__":
     print(optimumSolution(5))  # 5
     print(optimumSolution(7))  # 7
     print(optimumSolution(8))  # 2
+    print(optimumSolution(23))  # 23
     print(optimumSolution(33))  # 11
     print(optimumSolution(13195))  # 29
     print(optimumSolution(600851475143))  # 6857 and wow that was fast
