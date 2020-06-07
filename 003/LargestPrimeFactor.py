@@ -67,6 +67,7 @@ def optimumSolution(num):
             # is the max prime number
             return prime
 
+    # else the result of num //= prime i.e. num itself is prime
     return num
 
 
