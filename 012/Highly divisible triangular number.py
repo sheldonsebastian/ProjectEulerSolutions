@@ -37,34 +37,61 @@ def naiveApproach(num_of_divisors):
     return triangle_number
 
 
+def get_prime_numbers(limit):
+    """To generate prime numbers less than and equal to 'limit' we use Sieve of Eratosthenes algorithm O(n*log(log(n))).
+    https://www.geeksforgeeks.org/sieve-of-eratosthenes/ """
+
+    # Create a boolean array "prime[0..n]" and initialize all entries it as true.
+    prime_array = [True for _ in range(0, limit + 1)]
+
+    # we find prime numbers starting from 2
+    prime_number = 2
+
+    # Since the composite numbers less than square(prime_number), will have atleast one prime factor less than p,
+    # thus the will already be marked in prime_array
+    while prime_number * prime_number <= limit:
+
+        # If prime_array[prime_number] is not changed, then it is a prime
+        if prime_array[prime_number]:
+
+            # Update all multiples of prime_number (thus increment the for loop by p) starting from p*p upto and
+            # including n
+            for i in range(prime_number * prime_number, limit + 1, prime_number):
+                prime_array[i] = False
+
+        # find the next prime number by incrementing variable by 1
+        prime_number += 1
+
+    # return all numbers whose value is True in the list
+    return [p for p in range(2, limit + 1) if prime_array[p]]
+
+
 def get_divisors_count(number):
-    exponents = []
-    exponent_value = 0
-    while number % 2 == 0:
-        number //= 2
-        exponent_value += 1
+    # get prime numbers upto sqrt of number, since for a composite number we will atmost 1 prime factor above the
+    # sqrt of composite number
+    primes = get_prime_numbers(math.floor(math.sqrt(number)) + 1)
 
-    if exponent_value != 0:
-        exponents.append(exponent_value)
+    # since 1 is divisor for all start with divisor count = 1
+    divisor_count = 1
 
-    # number must be odd at this point so a skip of 2 ( i = i + 2) can be used, go only till sqrt of number since any
-    # composite number will have atmost one prime number above its square root
-    for i in range(3, int(math.sqrt(number)) + 1, 2):
-        exponent_value = 0
+    # iterate through all primes
+    for prime in primes:
 
-        # while i divides n , print i ad divide n
-        while number % i == 0:
-            number = number // i
-            exponent_value += 1
+        exponent_count = 0
 
-        if exponent_value != 0:
-            exponents.append(exponent_value)
+        # check if the prime number divides the composite number or not
+        while number % prime == 0:
+            # increment exponent counter
+            exponent_count += 1
 
-    count = 1
-    for exponent in exponents:
-        count *= (exponent + 1)
+            # divide the number by prime number
+            number //= prime
 
-    return count
+        if exponent_count != 0:
+            # multiply the divisor count by (exponent + 1)
+            divisor_count *= (exponent_count + 1)
+
+    return divisor_count
 
 
 # https://projecteuler.net/overview=012
@@ -72,9 +99,7 @@ def optimumSolution(num_of_divisors):
     """We can find all the prime factors of a triangle number in the form of p1^a * p2^b * p3^c * ... =
     triangle_number. Then we can find the number of divisors of a triangle number by (a+1)*(b+1)*(c+1)... This works
     because we are finding all combination of exponent numbers starting from 0 (that is why we added 1) upto the
-    exponent value itself. Also any triangle number at index n can be written as t = (n*(n+1))/2. Thus we can find
-    the corresponding number of divisors for n and (n+1)/2 and then multiply them to get the total number of divisors
-    for triangle number t """
+    exponent value itself."""
 
     # find triangle numbers starting from index 1
     t = 1
