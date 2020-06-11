@@ -57,10 +57,10 @@ def optimumSolution(upper_limit):
     for i in range(len(prime_number_array)):
         # if the square of the prime number is greater than limit then no point searching for other exponents,
         # thus set the exponent to 1
-        if prime_number_array[i] ^ 2 > upper_limit:
+        if prime_number_array[i] ** 2 > upper_limit:
             exponent_array[i] = 1
         else:
-            # since prime[i]^exponent[i] = upper_limit, taking log to base 2 on both sides, then shifting log(prime[
+            # since prime[i]**exponent[i] = upper_limit, taking log to base 2 on both sides, then shifting log(prime[
             # i]) to RHS and taking floor, we get the following equation:
             exponent_array[i] = math.floor(math.log(upper_limit, 2) / math.log(prime_number_array[i], 2))
 
