@@ -22,3 +22,10 @@ if __name__ == "__main__":
     print(dynamic_programming(9, 9))  # 48620
     print(dynamic_programming(20, 20))  # 137846528820
     print()
+
+    # using combinatorics
+    print(optimumSolution(2, 2))  # 6
+    print(optimumSolution(4, 4))  # 70
+    print(optimumSolution(9, 9))  # 48620
+    print(optimumSolution(20, 20))  # 137846528820
+    print()
