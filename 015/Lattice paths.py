@@ -24,6 +24,7 @@ if __name__ == "__main__":
     print()
 
     # using combinatorics
+    # TODO need to revise Combinatorics
     print(optimumSolution(2, 2))  # 6
     print(optimumSolution(4, 4))  # 70
     print(optimumSolution(9, 9))  # 48620
