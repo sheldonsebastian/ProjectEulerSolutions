@@ -30,4 +30,4 @@ if __name__ == "__main__":
         contents = contents.replace('"', "")
         contents = contents.split(",")
 
-    print(naiveApproach(contents))
+    print(naiveApproach(contents))  # 871198282
